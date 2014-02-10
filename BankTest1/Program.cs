@@ -145,21 +145,12 @@ namespace BankTest1
         static void Main(string[] args)
         {
             IBank friendlyBank = new ArrayBank(50); 
-            IAccount account = new CustomerAccount("Rob", 0); 
-            if (friendlyBank.StoreAccount(account)) 
-            {
-                Console.WriteLine ( "Account stored OK" );
-            }
-            account = new CustomerAccount("Rudi", 1000);
-            if (friendlyBank.StoreAccount(account))
-            {
-                Console.WriteLine("Account stored OK");
-            }
-            account = new CustomerAccount("Toni", 1100);
-            if (friendlyBank.StoreAccount(account))
-            {
-                Console.WriteLine("Account stored OK");
-            }
+            Random rand = new Random();
+
+            friendlyBank.StoreAccount(new CustomerAccount("Rob", (decimal) rand.Next(101) * 100));
+            friendlyBank.StoreAccount(new CustomerAccount("Rudi", (decimal)rand.Next(101) * 100));
+            friendlyBank.StoreAccount(new CustomerAccount("Toni", (decimal)rand.Next(101) * 100));
+            friendlyBank.StoreAccount(new CustomerAccount("Per", (decimal)rand.Next(101) * 100));
             friendlyBank.PrintAccountList();
             Console.ReadKey();
 
